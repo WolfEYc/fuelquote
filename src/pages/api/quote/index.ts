@@ -1,11 +1,12 @@
 import { IQuote, Quote } from "@/lib/Models/Quote";
+import { User } from "@/lib/Models/User";
 import { connectToDatabase } from "@/lib/mongodb";
 import Validate from "next-api-validation";
 
 connectToDatabase()
 
 const quoteHandler = Validate({
-    async get(req, res){
+    async put(req, res){
         try{
             const quotes = await Quote.find({ userid: req.body })
             res.json(quotes);
@@ -20,7 +21,7 @@ const quoteHandler = Validate({
 
             const newQuote = new Quote(body)
             const saved = await newQuote.save()
-                    
+            
             res.json(saved)
         } catch (err) {
             console.error(err)

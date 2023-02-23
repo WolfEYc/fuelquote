@@ -1,14 +1,18 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import globalUser from "../hooks/globaluser";
 import { Register } from "../hooks/registration";
 import { IUser } from "../Models/User";
-
 
 
 export const Registration = () => {
     
     const [values, setValues] = useState<any>()
+
+    const router = useRouter()
+
 
     const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
 
@@ -20,9 +24,15 @@ export const Registration = () => {
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        const res = await Register(values);
+        globalUser.user = await Register(values);
 
-        console.log(res)
+        console.log(globalUser.user)
+
+        if(globalUser.user == null){
+            alert("Failed to Create or Update User!")
+        } else {
+            router.push("/quote")
+        }
     };
     
     return (
