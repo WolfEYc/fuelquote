@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import globalUser from "../hooks/globaluser"
 import { IUser } from "../Models/User";
 
@@ -8,28 +8,34 @@ import { IUser } from "../Models/User";
 
 export const UserDisplay = () => {
     
-    const user: IUser | null = globalUser.user;
+    const [currentUser, setUser] = useState<IUser>()
 
     useEffect(() => {
+
+        const { user } = globalUser;
+
         if(user == null){
             window.location.replace("/")
+        } else {
+            setUser(user)
         }
+
     }, [])
 
-    if(user == null){
+    if(currentUser == null){
         return <h1>Not logged in</h1>
     }
 
     return(
         <div className="flex flex-col">
-            <div>{user._id}</div>
-            <div>{user.username}</div>
-            <div>{user.password}</div>
-            <div>{user.address1}</div>
-            {user.address2 ? <div>{user.address2}</div> : <></>}
-            <div>{user.city}</div>
-            <div>{user.state}</div>
-            <div>{user.zipcode}</div>
+            <div>{currentUser._id}</div>
+            <div>{currentUser.username}</div>
+            <div>{currentUser.password}</div>
+            <div>{currentUser.address1}</div>
+            {currentUser.address2 ? <div>{currentUser.address2}</div> : <></>}
+            <div>{currentUser.city}</div>
+            <div>{currentUser.state}</div>
+            <div>{currentUser.zipcode}</div>
         </div>
     )
 }
