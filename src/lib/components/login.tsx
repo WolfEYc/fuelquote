@@ -13,6 +13,8 @@ export const Login = () => {
 
     const router = useRouter()
 
+    let submitted = false
+
     const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
 
         const user: IUser = {...values, [event.target.name] : event.target.value}
@@ -23,6 +25,9 @@ export const Login = () => {
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
+        if(submitted) return
+        submitted = true
+
         globalUser.user = await Register(values);
 
         console.log(globalUser.user)
@@ -32,6 +37,8 @@ export const Login = () => {
         } else {
             router.push("/quote")
         }
+
+        submitted = false
     };
     
     return (
