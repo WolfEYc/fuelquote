@@ -10,7 +10,6 @@ import { IUser } from "../Models/User";
 export const Login = () => {
     
     const [values, setValues] = useState<any>()
-
     const router = useRouter()
 
     let submitted = false
