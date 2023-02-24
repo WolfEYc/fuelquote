@@ -1,8 +1,8 @@
 import { IQuote } from "../Models/Quote";
-import globalUser from "./globaluser";
+import { GetUser } from "./globaluser";
 
 export const GetQuotes = async () => {
-    const { user } = globalUser
+    const user = GetUser()
 
     console.log(user)
     

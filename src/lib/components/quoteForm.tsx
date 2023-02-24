@@ -1,7 +1,7 @@
 "use client"
 
 import { FormEvent, useEffect, useState } from "react";
-import globalUser from "../hooks/globaluser";
+import { GetUser, GetQuotes } from "../hooks/globaluser";
 import { PricePerGallon, TotalPrice } from "../hooks/pricing";
 import { SubmitQuote } from "../hooks/quoteSubmit";
 import { IQuote } from "../Models/Quote";
@@ -14,7 +14,8 @@ export const QuoteForm = (getQuotes: () => Promise<void>) => {
     const handleChange = (event? : React.ChangeEvent<HTMLInputElement>) => {
         const quote: IQuote = event ? {...values, [event.target.name] : event.target.value} : values
 
-        const { user, quotes } = globalUser
+        const user = GetUser()
+        const quotes = GetQuotes()
 
         if(user == null) return
 
@@ -40,10 +41,9 @@ export const QuoteForm = (getQuotes: () => Promise<void>) => {
     };
 
     useEffect(() => {
-        const { user } = globalUser;
+        const user = GetUser()
 
         if(user == null) return
-        
 
         setValues({ userid: user._id, deliveryaddress: user.address1 })
     }, [])

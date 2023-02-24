@@ -5,6 +5,29 @@ interface GlobalUser {
     quotes: number
 }
 
-const globalUser: GlobalUser = { user: null, quotes: 0 }
 
-export default globalUser
+export function SetUser(user: IUser){
+    localStorage.setItem("user", JSON.stringify(user))
+}
+
+export function SetQuotes(quotes: number){
+    localStorage.setItem("quotes", quotes.toString())
+}
+
+export function GetUser(){
+    const userstring = localStorage.getItem("user")
+
+    if(userstring == null) return null;
+
+    const user: IUser = JSON.parse(userstring)
+
+    return user
+}
+
+export function GetQuotes(){
+    const quotestring = localStorage.getItem("quotes")
+
+    if(quotestring == null) return 0;
+
+    return parseInt(quotestring)
+}

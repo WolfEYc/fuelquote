@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import globalUser from "../hooks/globaluser";
+import { SetUser } from "../hooks/globaluser";
 import { Register } from "../hooks/registration";
 import { IUser } from "../Models/User";
 
@@ -27,13 +27,14 @@ export const Login = () => {
         if(submitted) return
         submitted = true
 
-        globalUser.user = await Register(values);
+        const newUser = await Register(values);
 
-        console.log(globalUser.user)
+        console.log(newUser)
 
-        if(globalUser.user == null){
+        if(newUser == null){
             alert("Failed to Create or Update User!")
         } else {
+            SetUser(newUser)
             router.push("/quote")
         }
 

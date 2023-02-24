@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import globalUser from "../hooks/globaluser";
+import { SetUser } from "../hooks/globaluser";
 import { Register } from "../hooks/registration";
 import { IUser } from "../Models/User";
 
@@ -12,6 +12,8 @@ export const Registration = () => {
     const [values, setValues] = useState<any>()
 
     const router = useRouter()
+
+    let submitted = false
 
 
     const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
@@ -24,15 +26,21 @@ export const Registration = () => {
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        globalUser.user = await Register(values);
+        if(submitted) return
+        submitted = true
 
-        console.log(globalUser.user)
+        const newUser = await Register(values);
 
-        if(globalUser.user == null){
+        console.log(newUser)
+
+        if(newUser == null){
             alert("Failed to Create or Update User!")
         } else {
+            SetUser(newUser)
             router.push("/quote")
         }
+
+        submitted = false
     };
     
     return (
