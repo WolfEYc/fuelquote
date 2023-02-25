@@ -44,7 +44,7 @@ export const Registration = () => {
     };
     
     return (
-        <div>
+        <div className="p-4 rounded relative">
             <form onSubmit={onSubmit} className="flex flex-col w-1/3">
             <input 
                 onChange={handleChange}
@@ -102,7 +102,7 @@ export const Registration = () => {
                 name="zipcode"
                 type="text"
                 placeholder="Zipcode"/>
-            <button type="submit">Submit</button>
+            <button className= "p-3 mt-4 w-24 mx-auto rounded bg-green-500 hover:bg-green-700 font-bold text-lg" type="submit">Submit</button>
             </form>
         </div>
     )

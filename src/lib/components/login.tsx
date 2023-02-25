@@ -42,11 +42,11 @@ export const Login = () => {
     };
     
     return (
-        <div>
-            <form onSubmit={onSubmit} className="flex flex-col w-1/3">
+        <div className="p-4 rounded relative max-w-lg">
+            <form onSubmit={onSubmit} className="flex flex-col max-w-lg">
             <input 
                 onChange={handleChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline mb-2 hover:bg-gray-100"
                 id="username"
                 name="username"
                 type="text"
@@ -58,7 +58,7 @@ export const Login = () => {
                 name="password"
                 type="text"
                 placeholder="Password"/>
-            <button type="submit">Submit</button>
+            <button className= "p-3 mt-4 w-24 mx-auto rounded bg-green-500 hover:bg-green-700 font-bold text-lg" type="submit">Login</button>
             </form>
         </div>
     )
