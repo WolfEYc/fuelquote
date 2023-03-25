@@ -102,7 +102,7 @@ export const Registration = () => {
                 name="zipcode"
                 type="text"
                 placeholder="Zipcode"/>
-            <button className= "p-3 mt-4 w-24 mx-auto rounded bg-green-500 hover:bg-green-700 font-bold text-lg" type="submit">Submit</button>
+            <button className= "p-3 mt-4 w-24 mx-auto rounded hover:bg-green-700 font-bold text-lg" type="submit">Submit</button>
             </form>
         </div>
     )
