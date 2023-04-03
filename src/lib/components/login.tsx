@@ -42,7 +42,7 @@ export const Login = () => {
     };
     
     return (
-        <div className="p-4 rounded relative max-w-lg  ">
+        <div className="p-4 rounded relative max-w-lg">
             <form onSubmit={onSubmit} className="flex flex-col max-w-lg">
             <input 
                 onChange={handleChange}
