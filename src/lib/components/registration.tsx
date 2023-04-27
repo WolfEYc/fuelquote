@@ -104,7 +104,7 @@ export const Registration = () => {
                 type="text"
                 placeholder="Zipcode"/>
             <div className="mx-auto flex">
-                <button className= "p-3 mt-4 w-24 mx-auto rounded bg-blue-500 hover:bg-green-700 font-bold text-lg" type="submit">
+                <button className= "p-3 mt-4 w-36 mx-auto rounded bg-blue-500 hover:bg-green-700 font-bold text-lg" type="submit">
                     Submit
                 </button>
                 <div className="mt-2 pl-64 ml-10">
