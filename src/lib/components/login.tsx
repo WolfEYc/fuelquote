@@ -32,7 +32,7 @@ export const Login = () => {
         console.log(newUser)
 
         if(newUser == null){
-            alert("Failed to Create or Update User!")
+            alert("Failed to Login!")
         } else {
             SetUser(newUser)
             router.push("/quote")
